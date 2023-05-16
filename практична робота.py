@@ -1,27 +1,27 @@
 # практична
-class InvaLidUserNameError(Exception):
-    def __int__(self,username):
-        self.username = username
-def register_user(username):
-    if len(username) <5:
-        raise InvaLidUserNameError(username)
-    else:
-        print("Все зареєстровано")
+#2
+class InvalidPassworld(Exception):
+    def __int__(self, passworld):
+        self.passwold = passworld
+def valide_passworld(passworld):
+    if len(passworld) < 8:
+        raise InvalidPassworld(passworld)
 try:
-    username = input("Ведіть імя корстувача")
-    register_user(username)
-except InvaLidUserNameError as e:
-        print(f"Неправильне ім'я користувача{e.username}","мінімум символів")
-class InvalidSimvolsError(Exception):
-    def __init__(self,username):
-        self.username = username
-def register_user(usermane):
-    invalide_simvols = ["!","@","#","%","&","*"]
-    for i in invalide_simvols:
-        if i in usermane:
-            raise InvaLidUserNameError(username)
+    passworld = input("Ведіть пароль")
+    valide_passworld(passworld)
+    print("пароль ведененно")
+except InvalidPassworld as e:
+    print(f"Неправильний пароль {e.passwold}, мінімум 8 значеннь")
+class InvalidPasswordError(Exception):
+ def __init__(self, password):
+    self.password = password
+def validate_password(password):
+    german_chars = ['ä', 'ö', 'ü', 'ß']
+    if german_chars in password:
+            raise InvalidPasswordError(password)
 try:
-    register_user("jagdgys!@jfgd")
-except InvaLidUserNameError as e:
-    print(f"ведено не правильно ім'я{e.username},треба без символів")
-
+    password = input('Введіть пароль: ')
+    validate_password(password)
+    print('Пароль веденено правильно')
+except InvalidPasswordError as e:
+        print(f'Неправильний пароль: {e.password}')
